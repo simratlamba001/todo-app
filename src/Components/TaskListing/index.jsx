@@ -1,5 +1,6 @@
 import taskItems from "../../../Data/task";
 import ButtonsSort from "../ButtonSort";
+import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import {
   FaRegStar,
@@ -72,6 +73,15 @@ const TaskListing = () => {
     settaskitems((oldValues) => {
       return oldValues.filter((items) => items.id !== id);
     });
+  };
+  const addNewTodoEvent = (item) => {
+    const newTodo = {
+      id: uuidv4(),
+      title: item,
+    };
+    console.log(newTodo);
+    const newItems = [...taskitems, newTodo];
+    settaskitems(newItems);
   };
   const renderItems = taskitems.map((items) => (
     <li className="">
@@ -153,7 +163,7 @@ const TaskListing = () => {
               <CommonButton children="Add New Task"></CommonButton>
             </div>
 
-            {isShown && <AddForm></AddForm>}
+            {isShown && <AddForm addNewTodo={addNewTodoEvent}></AddForm>}
 
             <h1 className="font-bold text-gray-700 my-5 text-center sm:text-left sm:my-8 md:text-2xl text-xl">
               My Tasks
