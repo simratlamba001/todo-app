@@ -1,4 +1,4 @@
-const books = [
+const data = [
   {
     id: 1,
     title: "The Power of HABIT",
@@ -157,4 +157,4 @@ const books = [
   },
 ];
 
-export default books;
+export default data;

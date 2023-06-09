@@ -78,6 +78,7 @@ const TaskListing = () => {
     const newTodo = {
       id: uuidv4(),
       title: item,
+      description: item,
     };
     console.log(newTodo);
     const newItems = [...taskitems, newTodo];
