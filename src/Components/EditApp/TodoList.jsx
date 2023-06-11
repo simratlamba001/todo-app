@@ -1,7 +1,7 @@
 import TodoItem from "./TodoItem";
-const TodoList = ({ todos, onDelete, onEdit }) => {
+const TodoList = ({ todos }) => {
   const renderItem = todos.map((item) => (
-    <TodoItem key={item.id} item={item} onDelete={onDelete} onEdit={onEdit} />
+    <TodoItem key={item.id} item={item} />
   ));
   return (
     <>

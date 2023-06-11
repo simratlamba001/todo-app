@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import EditForm from "./EditForm";
 import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
+import EditAppContext from "../../appContext";
 
-const TodoItem = ({ item, onDelete, onEdit }) => {
+const TodoItem = ({ item }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [readMore, setReadMore] = useState(true);
+  const { editTodoById, deleteTodoById } = useContext(EditAppContext);
 
   const handleSubmit = (id, newTitle) => {
     setIsEdit(false);
-    onEdit(id, newTitle);
+    editTodoById(id, newTitle);
   };
 
   return (
     <li className="w-1/3 p-3" key={item.id}>
       <div className="bg-gray-200 rounded">
         <div className="card-header relative">
-          <p className="bg-blue-500 opacity-70 text-white font-bold text-lg absolute top-0 right-0 p-2">
+          <p className="bg-blue-500 opacity-70 text-white font-bold text-lg absolute top-0 right-0 p-2 capitalize">
             {item.category}
           </p>
           <img
@@ -55,7 +57,7 @@ const TodoItem = ({ item, onDelete, onEdit }) => {
                 <FaEdit />
               </button>
               <button
-                onClick={() => onDelete(item.id)}
+                onClick={() => deleteTodoById(item.id)}
                 className="bg-blue-400 rounded px-3 py-2 text-lg text-white font-medium mr-3"
               >
                 <FaRegTrashAlt />

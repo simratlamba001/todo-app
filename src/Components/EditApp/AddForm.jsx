@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import EditAppContext from "../../appContext";
 
-const AddForm = ({ onCreateNewTodo }) => {
+const AddForm = () => {
   const [newTodo, setNewTodo] = useState("");
+  const { createNewTodo } = useContext(EditAppContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onCreateNewTodo(newTodo);
+    createNewTodo(newTodo);
     setNewTodo("");
   };
   return (
